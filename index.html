@@ -50,6 +50,8 @@
             });
         }
 
+        const volumeambient = 0.2;
+        const volumenvoice = 0.4;
         var engine = null;
         var scene = null;
         var sceneToRender = null;
@@ -66,9 +68,18 @@
              loop: true,
              autoplay: true,
              spatialSound: true,
+             volume: volumeambient,
             });
 
-            
+            const introVoice = new BABYLON.Sound("Redvoice", "sounds/introRojo.mp3", scene, null, {
+                playbackRate: 0.4,
+                volume: volume,
+                });
+
+            function voicepresentation()
+            {
+                introVoice.play();
+            }
 
             // Lights
             
@@ -96,7 +107,8 @@
             button1.cornerRadius = 20;
             button1.background = "green";
             button1.onPointerUpObservable.add(function() {
-            alert("you did it!");
+            //alert("you did it!");
+            voicepresentation();
             });
             
             advancedTexture.addControl(button1);
