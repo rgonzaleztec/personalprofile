@@ -63,6 +63,14 @@
             //var currentSkybox = scene.createDefaultSkybox(hdrTexture, true);
         
 
+
+            var music = new BABYLON.Sound("Jazz", "sounds/hipjazz-ambient.mp3", scene, 
+			function() {
+				// Sound has been downloaded & decoded
+				music.play();
+			}
+	);
+
             // Lights
             
 
