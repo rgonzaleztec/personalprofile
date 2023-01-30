@@ -162,10 +162,11 @@
             buttonHolo.linkToTransformNode(anchor);
             buttonHolo.position.z = -1.5;
             buttonHolo.position.x = 3;
+            buttonHolo.position.y = -0.2;
 
             buttonHolo.text = "rotate";
             //button.imageUrl = "./textures/down.png";
-            buttonHolo.scaling = 0.5;
+            buttonHolo.scaling = new BABYLON.Vector3(0.5, 0.5, 0.5);
             buttonHolo.onPointerUpObservable.add(function(){
                 soundOff()
             });
