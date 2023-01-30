@@ -80,12 +80,18 @@
 
             function voicepresentation()
             {
-                music.pause();
-                introVoice.play();
-                music.resume();
+                introVoice.play();   
             };
            
+            function soundOn()
+            {
+                music.play();
+            };
 
+            function soundOff()
+            {
+                music.Stop();
+            };
             // Lights
             
 
@@ -106,8 +112,8 @@
             var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
 
             var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Me presento");
-            button1.width = "150px"
-            button1.height = "40px";
+            button1.width = "200px"
+            button1.height = "70px";
             button1.color = "white";
             button1.cornerRadius = 20;
             button1.background = "blue";
@@ -116,8 +122,34 @@
             //alert("you did it!");
             voicepresentation();
             });
+
+            var button2 = BABYLON.GUI.Button.CreateSimpleButton("but2", "Sonido Off");
+            button2.width = "150px"
+            button2.height = "80px";
+            button2.color = "white";
+            button2.cornerRadius = 20;
+            button2.background = "blue";
+            button2.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM;
+            button2.onPointerUpObservable.add(function() {
+            //alert("you did it!");
+            soundOff();
+            });
             
+            var button3 = BABYLON.GUI.Button.CreateSimpleButton("but3", "Sonido On");
+            button3.width = "2050px"
+            button3.height = "8px";
+            button3.color = "white";
+            button3.cornerRadius = 20;
+            button3.background = "blue";
+            button3.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM;
+            button3.onPointerUpObservable.add(function() {
+            //alert("you did it!");
+            soundOn();
+            });
+
             advancedTexture.addControl(button1);
+            advancedTexture.addControl(button2);
+            advancedTexture.addControl(button3);
 
             
 
