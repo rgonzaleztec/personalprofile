@@ -62,6 +62,12 @@
             //var hdrTexture = BABYLON.CubeTexture.CreateFromPrefilteredData("textures/environment.dds", scene);
             //var currentSkybox = scene.createDefaultSkybox(hdrTexture, true);
         
+
+            // Lights
+            var light = new BABYLON.PointLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+	        light.diffuse = new BABYLON.Color3(1, 0, 0);
+	        light.specular = new BABYLON.Color3(0, 1, 0);
+
             // Append glTF model to scene.
             BABYLON.SceneLoader.Append("./", "Avatar2.glb", scene, function (scene) {
                 // Create a default arc rotate camera and light.
