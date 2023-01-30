@@ -119,42 +119,45 @@
             var manager = new BABYLON.GUI.GUI3DManager(scene);
 
             // Let's add a button
-            var buttonSonido = new BABYLON.GUI.HolographicButton("Sonido");
+            var buttonSonido = new BABYLON.GUI.TouchHolographicButton("Sonido");
             manager.addControl(buttonSonido);
             buttonSonido.linkToTransformNode(anchor);
             buttonSonido.position.z = 1;
             buttonSonido.position.x = -1;
             buttonSonido.position.y = -0.3;
 
-            buttonSonido.text = "Proyectos";
+            buttonSonido.text = "Sonido";
+            buttonProyectos.fontSize = 34;
             //button.imageUrl = "./textures/down.png";
             buttonSonido.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
             buttonSonido.onPointerUpObservable.add(function(){
                 soundOn();
             });
             
-            var buttonProyectos = new BABYLON.GUI.HolographicButton("Proyectos");
+            var buttonProyectos = new BABYLON.GUI.TouchHolographicButton("Proyectos");
             manager.addControl(buttonProyectos);
             buttonProyectos.linkToTransformNode(anchor);
             buttonProyectos.position.z = 1;
-            buttonProyectos.position.x = 1;
+            buttonProyectos.position.x = 0;
             buttonProyectos.position.y = -0.3;
 
             buttonProyectos.text = "Proyectos";
+            buttonProyectos.fontSize = 48;
             //button.imageUrl = "./textures/down.png";
             buttonProyectos.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
             buttonProyectos.onPointerUpObservable.add(function(){
                 //soundOn();
             });
 //////////////////////////////////////////////////////////
-            var buttonHorario = new BABYLON.GUI.HolographicButton("Horario");
+            var buttonHorario = new BABYLON.GUI.TouchHolographicButton("Horario");
             manager.addControl(buttonHorario);
             buttonHorario.linkToTransformNode(anchor);
             buttonHorario.position.z = 1;
-            buttonHorario.position.x = 2;
+            buttonHorario.position.x = 1;
             buttonHorario.position.y = -0.3;
 
-            buttonHorario.text = "Proyectos";
+            buttonHorario.text = "Horario";
+            buttonProyectos.fontSize = 40;
             //button.imageUrl = "./textures/down.png";
             buttonHorario.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
             buttonHorario.onPointerUpObservable.add(function(){
