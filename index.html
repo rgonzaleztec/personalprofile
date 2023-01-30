@@ -156,15 +156,15 @@
             var manager = new BABYLON.GUI.GUI3DManager(scene);
 
             // Let's add a button
-            var button = new BABYLON.GUI.HolographicButton("down");
-            manager.addControl(button);
-            button.linkToTransformNode(anchor);
-            button.position.z = -1.5;
-            button.position.x = -3;
+            var buttonHolo = new BABYLON.GUI.HolographicButton("down");
+            manager.addControl(buttonHolo);
+            buttonHolo.linkToTransformNode(anchor);
+            buttonHolo.position.z = -1.5;
+            buttonHolo.position.x = -3;
 
-            button.text = "rotate";
+            buttonHolo.text = "rotate";
             //button.imageUrl = "./textures/down.png";
-            button.onPointerUpObservable.add(function(){
+            buttonHolo.onPointerUpObservable.add(function(){
                 //donut.rotation.x -= 0.05;
             });
             
