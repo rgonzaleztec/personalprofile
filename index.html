@@ -119,20 +119,47 @@
             var manager = new BABYLON.GUI.GUI3DManager(scene);
 
             // Let's add a button
-            var buttonHolo2 = new BABYLON.GUI.HolographicButton("Sonido");
-            manager.addControl(buttonHolo2);
-            buttonHolo2.linkToTransformNode(anchor);
-            buttonHolo2.position.z = 1;
-            buttonHolo2.position.x = -1;
-            buttonHolo2.position.y = -0.3;
+            var buttonSonido = new BABYLON.GUI.HolographicButton("Sonido");
+            manager.addControl(buttonSonido);
+            buttonSonido.linkToTransformNode(anchor);
+            buttonSonido.position.z = 1;
+            buttonSonido.position.x = -1;
+            buttonSonido.position.y = -0.3;
 
-            buttonHolo.text = "Proyectos";
+            buttonSonido.text = "Proyectos";
             //button.imageUrl = "./textures/down.png";
-            buttonHolo2.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
-            buttonHolo2.onPointerUpObservable.add(function(){
+            buttonSonido.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
+            buttonSonido.onPointerUpObservable.add(function(){
                 soundOn();
             });
             
+            var buttonProyectos = new BABYLON.GUI.HolographicButton("Proyectos");
+            manager.addControl(buttonProyectos);
+            buttonProyectos.linkToTransformNode(anchor);
+            buttonProyectos.position.z = 1;
+            buttonProyectos.position.x = 1;
+            buttonProyectos.position.y = -0.3;
+
+            buttonProyectos.text = "Proyectos";
+            //button.imageUrl = "./textures/down.png";
+            buttonProyectos.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
+            buttonProyectos.onPointerUpObservable.add(function(){
+                //soundOn();
+            });
+//////////////////////////////////////////////////////////
+            var buttonHorario = new BABYLON.GUI.HolographicButton("Horario");
+            manager.addControl(buttonHorario);
+            buttonHorario.linkToTransformNode(anchor);
+            buttonHorario.position.z = 1;
+            buttonHorario.position.x = 1;
+            buttonHorario.position.y = -0.3;
+
+            buttonHorario.text = "Proyectos";
+            //button.imageUrl = "./textures/down.png";
+            buttonHorario.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
+            buttonHorario.onPointerUpObservable.add(function(){
+                //soundOn();
+            });
 
             
         
