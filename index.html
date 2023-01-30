@@ -55,6 +55,17 @@
         var engine = null;
         var scene = null;
         var sceneToRender = null;
+
+        const introVoice = new BABYLON.Sound("Redvoice", "sounds/introRojo.mp3", scene, null, {
+               playbackRate: 0.4,
+               volume: volume,
+            });
+
+        function voicepresentation()
+        {
+           introVoice.play();
+        }
+
         var createDefaultEngine = function() { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true,  disableWebGL2Support: false}); };
         var delayCreateScene = function () {
             // Create a scene.
@@ -71,15 +82,7 @@
              volume: volumeambient,
             });
 
-            const introVoice = new BABYLON.Sound("Redvoice", "sounds/introRojo.mp3", scene, null, {
-                playbackRate: 0.4,
-                volume: volume,
-                });
-
-            function voicepresentation()
-            {
-                introVoice.play();
-            }
+           
 
             // Lights
             
