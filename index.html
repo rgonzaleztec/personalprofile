@@ -56,15 +56,7 @@
         var scene = null;
         var sceneToRender = null;
 
-        const introVoice = new BABYLON.Sound("Redvoice", "sounds/introRojo.mp3", scene, null, {
-               playbackRate: 0.4,
-               volume: volumenvoice,
-            });
-
-        function voicepresentation()
-        {
-           introVoice.play();
-        }
+        
 
         var createDefaultEngine = function() { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true,  disableWebGL2Support: false}); };
         var delayCreateScene = function () {
@@ -74,7 +66,7 @@
             // Create a default skybox with an environment.
             //var hdrTexture = BABYLON.CubeTexture.CreateFromPrefilteredData("textures/environment.dds", scene);
             //var currentSkybox = scene.createDefaultSkybox(hdrTexture, true);
-        
+        // Music
             var music = new BABYLON.Sound("Jazz", "sounds/hipjazz-ambient.mp3", scene, null, {
              loop: true,
              autoplay: true,
@@ -82,6 +74,15 @@
              volume: volumeambient,
             });
 
+            const introVoice = new BABYLON.Sound("Redvoice", "sounds/introRojo.mp3", scene, null, {
+               playbackRate: 0.4,
+               volume: volumenvoice,
+            });
+
+            function voicepresentation()
+            {
+                introVoice.play();
+            };
            
 
             // Lights
