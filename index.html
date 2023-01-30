@@ -50,8 +50,8 @@
             });
         }
 
-        const volumeambient = 0.2;
-        const volumenvoice = 0.4;
+        const volumeambient = 0.1;
+        const volumenvoice = 0.7;
         var engine = null;
         var scene = null;
         var sceneToRender = null;
@@ -80,7 +80,9 @@
 
             function voicepresentation()
             {
+                music.pause();
                 introVoice.play();
+                music.resume();
             };
            
 
