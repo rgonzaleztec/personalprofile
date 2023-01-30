@@ -92,7 +92,7 @@
 
             function soundOff()
             {
-                music.Stop();
+                music.stop();
             };
             // Lights
             
@@ -110,50 +110,7 @@
                 scene.activeCamera.alpha += Math.PI;
             });
 
-             // GUI
-            var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
-
-            var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Me presento");
-            button1.width = "200px"
-            button1.height = "70px";
-            button1.color = "white";
-            button1.cornerRadius = 20;
-            button1.background = "blue";
-            button1.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM;
-            button1.onPointerUpObservable.add(function() {
-            //alert("you did it!");
-            voicepresentation();
-            });
-
-            var button2 = BABYLON.GUI.Button.CreateSimpleButton("but2", "Sonido Off");
-            button2.width = "150px"
-            button2.height = "80px";
-            button2.color = "white";
-            button2.cornerRadius = 20;
-            button2.background = "blue";
-            button2.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM;
-            button2.onPointerUpObservable.add(function() {
-            //alert("you did it!");
-            soundOff();
-            });
-            
-            var button3 = BABYLON.GUI.Button.CreateSimpleButton("but3", "Sonido On");
-            button3.width = "2050px"
-            button3.height = "8px";
-            button3.color = "white";
-            button3.cornerRadius = 20;
-            button3.background = "blue";
-            button3.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM;
-            button3.onPointerUpObservable.add(function() {
-            //alert("you did it!");
-            soundOn();
-            });
-
-            advancedTexture.addControl(button1);
-            advancedTexture.addControl(button2);
-            advancedTexture.addControl(button3);
-
-                // Create the 3D UI manager
+            // Create the 3D UI manager
             var manager = new BABYLON.GUI.GUI3DManager(scene);
 
             // Let's add a button
@@ -162,13 +119,27 @@
             buttonHolo.linkToTransformNode(anchor);
             buttonHolo.position.z = -1.5;
             buttonHolo.position.x = 3;
-            buttonHolo.position.y = -0.2;
+            buttonHolo.position.y = -0.3;
 
             buttonHolo.text = "rotate";
             //button.imageUrl = "./textures/down.png";
             buttonHolo.scaling = new BABYLON.Vector3(0.5, 0.5, 0.5);
             buttonHolo.onPointerUpObservable.add(function(){
                 soundOff()
+            });
+
+            var buttonHolo2 = new BABYLON.GUI.HolographicButton("up");
+            manager.addControl(buttonHolo2);
+            buttonHolo2.linkToTransformNode(anchor);
+            buttonHolo2.position.z = -1.5;
+            buttonHolo2.position.x = 1;
+            buttonHolo2.position.y = -0.3;
+
+            buttonHolo.text = "Proyectos";
+            //button.imageUrl = "./textures/down.png";
+            buttonHolo.scaling = new BABYLON.Vector3(0.2, 0.2, 0.2);
+            buttonHolo.onPointerUpObservable.add(function(){
+                soundOn()
             });
             
 
