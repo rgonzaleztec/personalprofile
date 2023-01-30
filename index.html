@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-        <title>Babylon.js sample code</title>
+        <title>Personal 3D Rogelio profile</title>
 
         <!-- Babylon.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
@@ -161,12 +161,13 @@
             manager.addControl(buttonHolo);
             buttonHolo.linkToTransformNode(anchor);
             buttonHolo.position.z = -1.5;
-            buttonHolo.position.x = -3;
+            buttonHolo.position.x = 3;
 
             buttonHolo.text = "rotate";
             //button.imageUrl = "./textures/down.png";
+            buttonHolo.scaling = 0.5;
             buttonHolo.onPointerUpObservable.add(function(){
-                soundOn()
+                soundOff()
             });
             
 
