@@ -64,14 +64,15 @@
         
 
             // Lights
-            var light = new BABYLON.PointLight("light", new BABYLON.Vector3(0, 1, 0), scene);
-	        light.diffuse = new BABYLON.Color3(1, 0, 0);
-	        light.specular = new BABYLON.Color3(0, 1, 0);
+            
 
             // Append glTF model to scene.
             BABYLON.SceneLoader.Append("./", "Avatar2.glb", scene, function (scene) {
                 // Create a default arc rotate camera and light.
                 scene.createDefaultCameraOrLight(true, true, true);
+                var light = new BABYLON.PointLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+	            light.diffuse = new BABYLON.Color3(1, 0, 0);
+	            light.specular = new BABYLON.Color3(0, 1, 0);
         
                 // The default camera looks at the back of the asset.
                 // Rotate the camera by 180 degrees to the front of the asset.
