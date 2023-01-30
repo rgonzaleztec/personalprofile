@@ -55,7 +55,7 @@
         var engine = null;
         var scene = null;
         var sceneToRender = null;
-        var anchor = new BABYLON.AbstractMesh("anchor", scene);
+        
 
         
 
@@ -63,6 +63,7 @@
         var delayCreateScene = function () {
             // Create a scene.
             var scene = new BABYLON.Scene(engine);
+            var anchor = new BABYLON.AbstractMesh("anchor", scene);
         
             // Create a default skybox with an environment.
             //var hdrTexture = BABYLON.CubeTexture.CreateFromPrefilteredData("textures/environment.dds", scene);
