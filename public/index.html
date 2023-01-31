@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <title>Personal 3D Rogelio profile</title>
+
+        <!-- Babylon.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
+        <script src="https://assets.babylonjs.com/generated/Assets.js"></script>
+        <script src="https://preview.babylonjs.com/ammo.js"></script>
+        <script src="https://preview.babylonjs.com/cannon.js"></script>
+        <script src="https://preview.babylonjs.com/Oimo.js"></script>
+        <script src="https://preview.babylonjs.com/earcut.min.js"></script>
+        <script src="https://preview.babylonjs.com/babylon.js"></script>
+        <script src="https://preview.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+        <script src="https://preview.babylonjs.com/proceduralTexturesLibrary/babylonjs.proceduralTextures.min.js"></script>
+        <script src="https://preview.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js"></script>
+        <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.js"></script>
+        <script src="https://preview.babylonjs.com/serializers/babylonjs.serializers.min.js"></script>
+        <script src="https://preview.babylonjs.com/gui/babylon.gui.min.js"></script>
+        <script src="https://preview.babylonjs.com/inspector/babylon.inspector.bundle.js"></script>
+
+        <style>
+            html, body {
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            #renderCanvas {
+                width: 100%;
+                height: 100%;
+                touch-action: none;
+            }
+        </style>
+    </head>
+<body>
+    <canvas id="renderCanvas"></canvas>
+    <script>
+        var canvas = document.getElementById("renderCanvas");
+
+        var startRenderLoop = function (engine, canvas) {
+            engine.runRenderLoop(function () {
+                if (sceneToRender && sceneToRender.activeCamera) {
+                    sceneToRender.render();
+                }
+            });
+        }
+
+        const volumeambient = 0.1;
+        const volumenvoice = 0.7;
+        var engine = null;
+        var scene = null;
+        var sceneToRender = null;
+        
+
+        
+
+        var createDefaultEngine = function() { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true,  disableWebGL2Support: false}); };
+        var delayCreateScene = function () {
+            // Create a scene.
+            var scene = new BABYLON.Scene(engine);
+            var anchor = new BABYLON.AbstractMesh("anchor", scene);
+        
+            // Create a default skybox with an environment.
+            //var hdrTexture = BABYLON.CubeTexture.CreateFromPrefilteredData("textures/environment.dds", scene);
+            //var currentSkybox = scene.createDefaultSkybox(hdrTexture, true);
+        // Music
+            var music = new BABYLON.Sound("Jazz", "sounds/hipjazz-ambient.mp3", scene, null, {
+             loop: true,
+             autoplay: true,
+             spatialSound: true,
+             volume: volumeambient,
+            });
+
+            const introVoice = new BABYLON.Sound("Redvoice", "sounds/introRojo.mp3", scene, null, {
+               volume: volumenvoice,
+            });
+
+            function voicepresentation()
+            {
+                introVoice.play();   
+            };
+           
+            function soundOn()
+            {
+                if (!music.isPlaying) {
+                    music.play();
+                }
+                else {
+                    music.stop();
+                }
+            };
+
+            function soundOff()
+            {
+                music.stop();
+            };
+            // Lights
+            
+
+            // Append glTF model to scene.
+            BABYLON.SceneLoader.Append("", "Avatar2.glb", scene, function (scene) {
+                // Create a default arc rotate camera and light.
+                //scene.createDefaultCameraOrLight(true, true, true);
+                var camera = new BABYLON.ArcRotateCamera("cam", -Math.PI / 2, Math.PI / 2, 10, BABYLON.Vector3.Zero());
+                camera.wheelDeltaPercentage = 0.01;
+                camera.attachControl(canvas, true);
+                var light = new BABYLON.PointLight("light", new BABYLON.Vector3(0, 1, 1), scene);
+	            light.diffuse = new BABYLON.Color3(1, 0, 0);
+	            light.specular = new BABYLON.Color3(0, 1, 0);
+        
+                // The default camera looks at the back of the asset.
+                // Rotate the camera by 180 degrees to the front of the asset.
+                scene.activeCamera.alpha += Math.PI;
+            });
+
+            // Create the 3D UI manager
+            var manager = new BABYLON.GUI.GUI3DManager(scene);
+
+            // Let's add a button
+            var buttonSonido = new BABYLON.GUI.TouchHolographicButton("Sonido");
+            const text1 = new BABYLON.GUI.TextBlock();
+            text1.text = "Sonido";
+            text1.color = "White";
+            text1.fontSize = 34;
+            buttonSonido.content = text1;
+            manager.addControl(buttonSonido);
+            buttonSonido.linkToTransformNode(anchor);
+            buttonSonido.position.z = 1;
+            buttonSonido.position.x = -1;
+            buttonSonido.position.y = -0.3;
+            
+
+           
+            //button.imageUrl = "./textures/down.png";
+            buttonSonido.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
+            buttonSonido.onPointerUpObservable.add(function(){
+                soundOn();
+            });
+            
+            var buttonProyectos = new BABYLON.GUI.TouchHolographicButton("Proyectos");
+            //const text1 = new BABYLON.GUI.TextBlock();
+            text1.text = "Proyectos";
+            text1.color = "White";
+            text1.fontSize = 48;
+            buttonProyectos.content = text1;
+            manager.addControl(buttonProyectos);
+            buttonProyectos.linkToTransformNode(anchor);
+            buttonProyectos.position.z = 1;
+            buttonProyectos.position.x = 0;
+            buttonProyectos.position.y = -0.3;
+
+            
+            //button.imageUrl = "./textures/down.png";
+            buttonProyectos.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
+            buttonProyectos.onPointerUpObservable.add(function(){
+                //soundOn();
+            });
+//////////////////////////////////////////////////////////
+            var buttonHorario = new BABYLON.GUI.TouchHolographicButton("Horario");
+            //buttonHorario.text = "Horario";
+            //buttonProyectos.fontSize = 40;
+            text1.text = "Horario";
+            text1.color = "White";
+            text1.fontSize = 40;
+            buttonHorario.content = text1;
+            manager.addControl(buttonHorario);
+            buttonHorario.linkToTransformNode(anchor);
+            buttonHorario.position.z = 1;
+            buttonHorario.position.x = 1;
+            buttonHorario.position.y = -0.3;
+
+            
+            //button.imageUrl = "./textures/down.png";
+            buttonHorario.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
+            buttonHorario.onPointerUpObservable.add(function(){
+                //soundOn();
+            });
+
+            
+        
+            return scene;
+        };
+                window.initFunction = async function() {
+                    
+                    
+                    var asyncEngineCreation = async function() {
+                        try {
+                        return createDefaultEngine();
+                        } catch(e) {
+                        console.log("the available createEngine function failed. Creating the default engine instead");
+                        return createDefaultEngine();
+                        }
+                    }
+
+                    window.engine = await asyncEngineCreation();
+        if (!engine) throw 'engine should not be null.';
+        startRenderLoop(engine, canvas);
+        window.scene = delayCreateScene();};
+        initFunction().then(() => {sceneToRender = scene                    
+        });
+
+        // Resize
+        window.addEventListener("resize", function () {
+            engine.resize();
+        });
+    </script>
+</body>
+</html>
