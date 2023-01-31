@@ -107,6 +107,8 @@
                 // Create a default arc rotate camera and light.
                 //scene.createDefaultCameraOrLight(true, true, true);
                 var camera = new BABYLON.ArcRotateCamera("cam", -Math.PI / 2, Math.PI / 2, 10, BABYLON.Vector3.Zero());
+                camera.wheelDeltaPercentage = 0.01;
+                camera.attachControl(canvas, true);
                 var light = new BABYLON.PointLight("light", new BABYLON.Vector3(0, 1, 1), scene);
 	            light.diffuse = new BABYLON.Color3(1, 0, 0);
 	            light.specular = new BABYLON.Color3(0, 1, 0);
