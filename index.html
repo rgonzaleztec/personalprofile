@@ -103,7 +103,7 @@
             
 
             // Append glTF model to scene.
-            BABYLON.SceneLoader.Append("./", "Avatar2.glb", scene, function (scene) {
+            BABYLON.SceneLoader.Append("", "Avatar2.glb", scene, function (scene) {
                 // Create a default arc rotate camera and light.
                 //scene.createDefaultCameraOrLight(true, true, true);
                 var camera = new BABYLON.ArcRotateCamera("cam", -Math.PI / 2, Math.PI / 2, 10, BABYLON.Vector3.Zero());
